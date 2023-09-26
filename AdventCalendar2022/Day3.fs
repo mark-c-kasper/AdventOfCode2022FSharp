@@ -2,16 +2,16 @@ module AdventCalendar2022.Day3
 
     open System
     
-    let day3input = """vJrwpWtwJgWrhcsFMMfFFhFp
+    let private day3input = """vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg
 wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
 ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw"""
 
-    let inputList = day3input.Split Environment.NewLine
+    let private inputList = day3input.Split Environment.NewLine
     
-    let alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let private alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     // let printInputListLength (inputList: string array) =
     //     for input in inputList do
@@ -28,7 +28,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw"""
     //         SplitInput ( firstHalf, secondHalf )
     //     ]
         
-    let inputSplitterSingle (input: string) =
+    let private inputSplitterSingle (input: string) =
         let length = input.Length / 2  // Since everything here is even.
         let firstHalf = input.Substring(0, length)
         let secondHalf = input.Substring(length)
@@ -44,7 +44,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw"""
     //             if input2.Contains c then c
     //     ]
         
-    let findSplitOverlappingCharacters (input: string * string) =
+    let private findSplitOverlappingCharacters (input: string * string) =
         let input1,input2 = input
         let characterList =
             [
@@ -58,7 +58,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw"""
     //     for list in overlappingCharacters do
     //         printfn $"%A{list}"
             
-    let calculateOverlappingTotal (overlappingCharacters: Set<char> array) =
+    let private calculateOverlappingTotal (overlappingCharacters: Set<char> array) =
         let mutable total = 0
         for set in overlappingCharacters do
             for i in set do
