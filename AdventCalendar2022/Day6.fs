@@ -8,14 +8,17 @@ nppdvjthqldpwncqszvftbrmjlhg
 nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg
 zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"""
 
+    
     let private isStringUniqueSetOfCharacters (unverifiedString: string) =
-        let res = query {
+        let isCount4 (set: Set<char>) =
+            set.Count = 4
+        query {
             for c in unverifiedString.ToCharArray() do
                 select c
                 distinct
         }
-        let set = Set res
-        set.Count = 4
+        |> Set
+        |> isCount4
         
     let rec private calculateMarkerPos (row:string) uniqueMarkerPosition =
         let isStringUnique = isStringUniqueSetOfCharacters (row.Substring(0, 4))
