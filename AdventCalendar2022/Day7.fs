@@ -4,20 +4,20 @@ module AdventCalendar2022.Day7
     open System.Collections.Generic
     open System.Linq
     
-    type Name = string
+    type private Name = string
     
-    type Size = int
+    type private Size = int
     
-    type File = {
+    type private File = {
         Name: Name
         Size: Size
     }
        
-    type CommandOrOutput =
+    type private CommandOrOutput =
         | Command
         | Output
     
-    let day7Input = """$ cd /
+    let private day7Input = """$ cd /
 $ ls
 dir a
 14848514 b.txt
@@ -80,19 +80,19 @@ $ ls
                 | _ -> contents.Add( { Name= $"%s{fileNamePrefix}%s{commandOutputLine[1]}"; Size= int (commandOutputLine[0]) })
         contents
     
-    let fetchFileSize (files: File * File) =
+    let private fetchFileSize (files: File * File) =
         let directory, file = files
         file.Size
         
-    let filter (files: Name * int) =
+    let private filter (files: Name * int) =
         let directory, size = files
         size < 100000
         
-    let printDirectorySize (directory: Name * int) =
+    let private printDirectorySize (directory: Name * int) =
         let name, size = directory
         printfn $"%s{name}, %i{size}"
         
-    let SumOfFilteredDirectories (filteredDirectories: seq<Name * int>) =
+    let private SumOfFilteredDirectories (filteredDirectories: seq<Name * int>) =
         let mutable totalSize = 0
         for fd in filteredDirectories do
             let name, size = fd
