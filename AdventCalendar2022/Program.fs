@@ -7,5 +7,6 @@ Day3.main
 Day4.main
 Day5.main
 Day6.main
+Day7.main
 
 printfn $"{Environment.NewLine}End of Advent Calendar."
