@@ -16,19 +16,15 @@ zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"""
         }
         let set = Set res
         set.Count = 4
-    
-    let private calculateMarkerPosition (row: string) =
-        let mutable i = 0
-        let mutable markerPositionFound = false
-        while (i <= row.Length-4) && not markerPositionFound do
-            let unverifiedString = row.Substring(i, 4)
-            if isStringUniqueSetOfCharacters unverifiedString then
-                markerPositionFound <- true
-            else i <- i+1
-        i + 4
+        
+    let rec private calculateMarkerPos (row:string) uniqueMarkerPosition =
+        let isStringUnique = isStringUniqueSetOfCharacters (row.Substring(0, 4))
+        match isStringUnique with
+        | true -> uniqueMarkerPosition
+        | false -> calculateMarkerPos (row.Substring(1)) uniqueMarkerPosition+1
     
     let private processRow (row: string) =
-        let position = calculateMarkerPosition row
+        let position = calculateMarkerPos row 4
         printfn $"Row: %s{row}: first marker after character %i{position}"
         ()
 
@@ -37,6 +33,4 @@ zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"""
         day6Input.Split Environment.NewLine
         |> Array.map processRow
         |> ignore
-        
-        
     
