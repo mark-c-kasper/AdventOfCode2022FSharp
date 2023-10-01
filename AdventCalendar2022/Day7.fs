@@ -73,7 +73,7 @@ $ ls
                 let commandOutputLine = c.Split(" ")
                 match commandOutputLine[0] with
                 // This said that the parent directory has a directory.  Unless we navigate there, the size is generally 0.
-                | "dir" -> () // NOOP fileNamePrefix <- fileNamePrefix //contents.Add($"%s{fileNamePrefix}/%s{commandOutputLine[1]}", 0)
+                | "dir" -> () // NOOP
                 // Need to show that we're changing the directory with our file names.
                 | "$" -> fileNamePrefix <- addDirectoryAndChangeReturnPrefix commandOutputLine fileNamePrefix contents
                 // Adding an actual file.
