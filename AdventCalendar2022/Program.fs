@@ -10,6 +10,10 @@ Day6.main
 Day7.main
 Day8.main
 Day9.main
+Day10.main
 
 
 printfn $"{Environment.NewLine}End of Advent Calendar."
+
+let flt: float = -12345.22
+printfn $"%.2f{flt}"

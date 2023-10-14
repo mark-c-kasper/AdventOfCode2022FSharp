@@ -23,12 +23,12 @@ R 2"""
     
     let mutable private tailHistory: Set<Tail> = Set.empty
     
-    let mutable head: Head = 0, 0
-    let mutable tail: Tail = 0, 0
+    let mutable private head: Head = 0, 0
+    let mutable private tail: Tail = 0, 0
         
-    let mutable bridge: char array array = Array.init 6 (fun i -> (Array.init 5 (fun p -> ' ')))
+    let mutable private bridge: char array array = Array.init 6 (fun i -> (Array.init 5 (fun p -> ' ')))
     
-    let printBridge bridge =
+    let private printBridge bridge =
         for row in bridge do
             printfn $"%A{row}"
     
@@ -76,11 +76,11 @@ R 2"""
         if headRow <> tailRow || headColumn <> tailColumn
         then bridge[tailRow][tailColumn] <- ' '
     
-    let horizontalIncrement direction =
+    let private horizontalIncrement direction =
         let headRow, headColumn = head
         head <- headRow + direction, headColumn
     
-    let verticalIncrement direction =
+    let private verticalIncrement direction =
         let headRow, headColumn = head
         head <- headRow, headColumn + direction
         
